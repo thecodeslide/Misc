@@ -1,0 +1,23 @@
+function ccc (arr, target) {
+  let len = arr.length, test = [];
+    let item = 0, index = item+1;
+  while (item < len-1) {
+    while(index <= len) {
+   if (arr[index]) {
+       if (arr[item] + arr[index] == target)
+       {
+         console.log("YAY! ", item, index, arr[item], arr[index]);
+          test.push(arr[item],arr[index]); 
+       }
+   }
+   index++;
+    }// while
+    item++;
+    if(item < len -1) {
+      index = item+1;
+    }
+  }// while
+  return test;
+    } // end functionnction
+//console.log(ccc([1,2,2,3,5,7,-1], 4));
+console.log(ccc([1,2,3,4,5], 7));
