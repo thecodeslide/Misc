@@ -1,108 +1,70 @@
-//hex = prompt("enter value: "); //#0f0f09 rgb(15, 15, 9)
-hex = "aaa";
+hex = prompt("enter value(ff909f): ");
+//hex = "ff90f9";
 console.log(hex);
-h = "";
-var c = hex.length;
-if((hex.length == 3) || (hex.length ==6)) {
-  // let h = "";
-if(hex.length == 3) 
-   for(let i = 0; i < hex.length; i++) {
-     h += conversion(hex.substring(i, i+1));
-    h += " .. ";
+// console.log("parsed ", parseInt(hex, 16));
+var h = "";
+var len = hex.length;
+
+var hexToDec = hex => {
+  hex = hex.toLowerCase();
+  if(hex < 0 || hex > 'ffffff')
+    return "mission to mars";
+  
+ if (len === 3) {
+   for(let i of hex) {
+     h += conversion(i);
+     h += "... ";
    }
-
-else // length == 6
-  for (let i = 0; i < hex.length; i += 2){
-      h += conversion(hex.substring(i, i+2));
-    h += ", ";
-  }
-// else {} //return error
- }
-
-function conversion (hexx) {
-  let h = ["a","b","c","d","e","f"], s = [];
-   let len = hexx.length;
-  if(hexx.length == 1) { // length == 3
-  if(hex == 0) {
-      return 0;
-      }
-   else if (hexx <= 9){
-//hex = prompt("enter value: "); //#0f0f09 rgb(15, 15, 9)
-hex = "aaa";
-console.log(hex);
-h = "";
-var c = hex.length;
-if((hex.length == 3) || (hex.length ==6)) {
-if(hex.length == 3) 
-   for(let i = 0; i < hex.length; i++) {
-     h += conversion(hex.substring(i, i+1));
-   }
-
-else // length == 6
-  for (let i = 0; i < hex.length; i += 2){
+   return h;
+ } //if
+  else if(len === 6) {
+    for (let i = 0; i < len; i += 2){
       h += conversion(hex.substring(i, i+2));
         h += ", ";
+    }
+    return h;
   }
-// else {} //return error
- }
-function conversion (hexx) {
-  let h = ["a","b","c","d","e","f"], s = [];
-   let len = hexx.length;
-  if(hexx.length == 1) { // length == 3
-  if(hex == 0) {
-      return 0;
+  else 
+    console.log("Invalid length");
+};
+
+var conversion = function(hex2) {
+  console.log("parsed ", parseInt(hex2, 16))
+  if (len === 3) { // one value
+    for(let item of hex2){
+        // if(item === "0")
+        //   return "00";
+        // else if((item >= "0") && (item <= "f")) {
+        //   item += item;
+        //   console.log("item ", item);
+        //   return helpme(item);
+        // }
+        return item === "0" ? "00"
+        : (item >= "0" && item <= "f") ? helpme(item += item)
+        : null;
       }
-   else if (hexx <= 9){
-        return ((hexx * 16) + Number(hexx));
-   }
-   else if ((hexx >= "a") && (hexx <= "f")) {
-     if(h.includes(hexx)) {
-      return (h.indexOf(hexx) + 10) * 16 + (h.indexOf(hexx) + 10); 
-     }
-   }
-  } // end length == 3
-   else { // length == 6
-     let s = ""; //let c = [];
-     for(let i in hexx) {
-        if ((hexx[i] >= 0 || hexx[i] <= 9) && hex != "10") {
-          if (Array.isArray(s)){
-            s = s.concat(hexx[i]);
-            console.log(s);
-            }
-            else
-            s += String(hexx[i]);
-          if(s.length ==2){
-              if (s === "00")
-                  return 0;
-            else if(s[0] === "0") 
-        return s[1];
-      else
-      return s = Number(s[0])*16 + Number(s[1]); //90
-          }
-       }//if
-        if(h.includes(hexx[i])){ // a to f
-      if(Array.isArray(s)) {
-        s.push((h.indexOf(hexx[i])) + 10);
-            }
-        else{
-        s = s.split("").concat(String((h.indexOf(hexx[i])) + 10));}
-      if (i == hexx.length-1) {
-       if(s <= 15) // a to f
-          return s;
-    
-    else {
-      if(Array.isArray(s)) {
-        let ss = -0;
-        for (let i = s.length-1, j=0; i >= 0; i--,j++) {
-          ss += Number(s[j]) * 16**i; 
-                }
-      return ss;
-            }
-      return s = Number(s[0])*16 + Number(s[1]); // "f9?"
-        }
-       }
-      } // a to f
-   }// for
-  }//else
-}
-console.log(h);
+    }
+  else // 6 - 2 values
+    // if(hex2[0] === "0") {
+    //   if(hex2[1] === "0")
+    //     return "00";
+    //   if (hex2[1] > 0 || hex2[1] <= 9)
+    //     return hex2[1];
+    //   return helpme(hex2[1]); //a to f
+    // }
+    return helpme(hex2); // split into array first?
+};
+
+var helpme = hex3 => {
+  let ss = -0, s = [];
+  let h = ["a","b","c","d","e","f"];
+    for(i of hex3) {
+      h.includes(i) ? s.push(h.indexOf(i) + 10) : s.push(i);
+    }
+    for (let i = hex3.length-1, j=0; i >= 0; i--,j++) {
+      ss += Number(s[j]) * 16**i;
+    }
+    return ss;
+};
+
+console.log(hexToDec(hex));
