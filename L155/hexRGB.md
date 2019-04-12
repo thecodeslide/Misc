@@ -1,3 +1,4 @@
+```js
 // hex = prompt("enter value(ff909f): ");
 // value = prompt("\nfor hex: #ff909f \nfor RGB: 233,01,255\nenter value: ");
 hex = "#ff9 ff";
@@ -56,7 +57,7 @@ var conversion = function(hex2) {
 
 var helpme = hex3 => {
   let ss = -0;//, s = [];
-  let h = ["a","b","c","d","e","f"];
+  let h = 'abcdef';//["a","b","c","d","e","f"];
 
     for (let i = hex3.length-1, j=0; i >= 0; i--,j++) {
       h.includes(hex3[j]) ? ss += (h.indexOf(hex3[j]) + 10) * 16**i :ss += hex3[j] * 16 **i
@@ -74,3 +75,4 @@ function isNumeric(n) {
 }
 
 console.log(hexToDec(hex));
+```
