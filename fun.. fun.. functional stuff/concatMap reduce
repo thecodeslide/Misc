@@ -1,3 +1,4 @@
+```js
 function() {
 // 	'use strict';
 	var movieLists = [
@@ -79,3 +80,4 @@ function() {
 		});
 
 }
+```
