@@ -19,5 +19,22 @@ def sorted_intersect(first, second):
             else: 
                 first = first.next
 
+
+
+
+def sorted_intersect(first, second):
+    # Your code goes here.
+    if first and second:
+        if first.data == second.data:
+            head = Node(first.data)
+            node = sorted_intersect(first.next, second.next)
+            if node is None: node = head
+            elif node.data != head.data: 
+                head.next = node
+            return head
+        elif first.data > second.data : 
+            return sorted_intersect(first, second.next)
+        else:  return sorted_intersect(first.next, second)
+        return head if head else None
     return new
 ```
