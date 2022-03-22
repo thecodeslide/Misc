@@ -18,9 +18,10 @@ def sorted_intersect(first, second):
                 second = second.next
             else: 
                 first = first.next
+    return new
+   
 
-
-
+ 
 
 def sorted_intersect(first, second):
     # Your code goes here.
@@ -36,5 +37,4 @@ def sorted_intersect(first, second):
             return sorted_intersect(first, second.next)
         else:  return sorted_intersect(first.next, second)
         return head if head else None
-    return new
 ```
