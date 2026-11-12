@@ -54,6 +54,8 @@ public class TransportTest {
         System.out.println();
         
         System.out.println("Enter name of Train next station: ");
+		// nextLine() picks up the leftover line break
+		reader.nextLine();
         String nameS=reader.nextLine();
         trainDriver.setNameStation(nameS);
         System.out.println("TRAIN DETAILS: ");
@@ -88,6 +90,7 @@ public class TransportTest {
     public static void printDestination(Transport Obj)
     {
         //Transport.getDestination(Obj);
+		// works through an instanceof chain - remove for polymo
         System.out.println(Transport.getDestination(Obj));
     }
 }
