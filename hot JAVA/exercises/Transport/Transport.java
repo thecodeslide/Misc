@@ -6,7 +6,7 @@ public abstract class Transport implements TransportInterface{
     private int passengers, capacity;
     public Transport(int c, int p)
     {
-        passengers=0;
+        passengers=p;
         capacity=c;
     }
     
@@ -50,7 +50,7 @@ public abstract class Transport implements TransportInterface{
     {
        // int num=getNumberPassengers();
         int num=this.passengers-p;
-        if(num>=capacity)
+        if(num>=0)
         {
             passengers=num;
         }
